@@ -3,7 +3,7 @@ const initialState = {
     foodItems: [],
 };
 
-const quoteReducer = (state = initialState, action) => {
+const foodReducer = (state = initialState, action) => {
     switch (action.type) {
         case "LOADING_FOOD_ITEMS":
             return {
@@ -22,4 +22,4 @@ const quoteReducer = (state = initialState, action) => {
     }
 };
 
-export default quoteReducer;
+export default foodReducer;
