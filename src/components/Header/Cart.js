@@ -4,10 +4,23 @@ import {
     CloseSharp as CloseSharpIcon,
     RemoveCircleSharp as RemoveCircleSharpIcon,
 } from "@material-ui/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 const Cart = ({ openCartModal, handleOpenCartModal, cartItems }) => {
+    const [cartTotal, setCartTotal] = useState(0);
+
+    useEffect(() => {
+        let cartTotalAmount = 0;
+
+        cartItems.map((item) => {
+            cartTotalAmount += item.price;
+            return cartTotalAmount;
+        });
+
+        setCartTotal(cartTotalAmount);
+    }, [cartItems]);
+
     return (
         <Modal
             aria-labelledby="cart modal"
@@ -44,19 +57,23 @@ const Cart = ({ openCartModal, handleOpenCartModal, cartItems }) => {
                                         </div>
 
                                         <div className="cart_item_quantity__container">
-                                            <div className="add_one_item__icon">
-                                                <AddCircleSharpIcon />
+                                            <div className="remove_one_item__icon">
+                                                <RemoveCircleSharpIcon />
                                             </div>
                                             <div className="cart_item__quantity">
                                                 {item.quantity}
                                             </div>
-                                            <div className="remove_one_item__icon">
-                                                <RemoveCircleSharpIcon />
+                                            <div className="add_one_item__icon">
+                                                <AddCircleSharpIcon />
                                             </div>
                                         </div>
                                     </div>
                                 );
                             })}
+                        </div>
+
+                        <div className="cart_total__container">
+                            <div className="cart__total">{cartTotal}</div>
                         </div>
 
                         <div className="cart_buttons__container">

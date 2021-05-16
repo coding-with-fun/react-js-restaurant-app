@@ -6,12 +6,25 @@ import {
     Typography,
 } from "@material-ui/core";
 import { ShoppingCart as ShoppingCartIcon } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
 
-const AppBar = () => {
+const AppBar = ({ cartItems }) => {
     const [openCartModal, setOpenCartModal] = useState(false);
+    const [totalCartItems, setTotalCartItems] = useState(0);
+
+    useEffect(() => {
+        let cartTotalItems = 0;
+
+        cartItems.map((item) => {
+            cartTotalItems += item.quantity;
+            return cartTotalItems;
+        });
+
+        setTotalCartItems(cartTotalItems);
+    }, [cartItems]);
 
     const handleOpenCartModal = () => {
         setOpenCartModal(!openCartModal);
@@ -33,7 +46,10 @@ const AppBar = () => {
                             color="inherit"
                             onClick={handleOpenCartModal}
                         >
-                            <Badge badgeContent={12} color="secondary">
+                            <Badge
+                                badgeContent={totalCartItems}
+                                color="secondary"
+                            >
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
@@ -51,4 +67,8 @@ const AppBar = () => {
     );
 };
 
-export default AppBar;
+export default connect((state) => {
+    return {
+        cartItems: state.cartItemsData.cartItems,
+    };
+})(AppBar);
