@@ -1,4 +1,11 @@
-import { Backdrop, Button, Container, Fade, Modal } from "@material-ui/core";
+import {
+    Backdrop,
+    Button,
+    Container,
+    Fade,
+    IconButton,
+    Modal,
+} from "@material-ui/core";
 import {
     AddCircleSharp as AddCircleSharpIcon,
     CloseSharp as CloseSharpIcon,
@@ -57,15 +64,21 @@ const Cart = ({ openCartModal, handleOpenCartModal, cartItems }) => {
                                         </div>
 
                                         <div className="cart_item_quantity__container">
-                                            <div className="remove_one_item__icon">
+                                            <IconButton
+                                                aria-label="remove"
+                                                className="remove_one_item__icon"
+                                            >
                                                 <RemoveCircleSharpIcon />
-                                            </div>
+                                            </IconButton>
                                             <div className="cart_item__quantity">
                                                 {item.quantity}
                                             </div>
-                                            <div className="add_one_item__icon">
+                                            <IconButton
+                                                aria-label="add"
+                                                className="add_one_item__icon"
+                                            >
                                                 <AddCircleSharpIcon />
-                                            </div>
+                                            </IconButton>
                                         </div>
                                     </div>
                                 );
@@ -73,11 +86,16 @@ const Cart = ({ openCartModal, handleOpenCartModal, cartItems }) => {
                         </div>
 
                         <div className="cart_total__container">
-                            <div className="cart__total">{cartTotal}</div>
+                            Your total amount is{" "}
+                            <span className="cart__total">{cartTotal}</span>
                         </div>
 
                         <div className="cart_buttons__container">
-                            <Button variant="outlined" color="primary">
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                onClick={handleOpenCartModal}
+                            >
                                 Confirm Order
                             </Button>
                         </div>
