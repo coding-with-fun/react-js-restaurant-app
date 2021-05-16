@@ -1,28 +1,21 @@
 import React from "react";
-import {
-    BrowserRouter as Router,
-    Redirect,
-    Route,
-    Switch,
-} from "react-router-dom";
-import Home from "../components/Home";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Checkout from "../components/Checkout";
+import Home from "../components/Home";
 
 const WrappedRouter = () => {
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route exact path="/checkout">
-                    <Checkout />
-                </Route>
-                <Route path="*">
-                    <Redirect to="/" />
-                </Route>
-            </Switch>
-        </Router>
+        <Switch>
+            <Route exact path="/">
+                <Home />
+            </Route>
+            <Route exact path="/checkout">
+                <Checkout />
+            </Route>
+            <Route path="*">
+                <Redirect to="/" />
+            </Route>
+        </Switch>
     );
 };
 

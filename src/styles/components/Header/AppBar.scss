@@ -1,0 +1,10 @@
+.app_bar__container,
+.app_bar_spacing__container {
+    flex-grow: 1;
+}
+
+.app_bar__container {
+    .app_bar_icons__container {
+        display: "flex";
+    }
+}

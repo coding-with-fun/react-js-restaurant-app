@@ -1,0 +1,19 @@
+.cart__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .cart_content__container {
+        background-color: #fff;
+        min-height: 50vh;
+
+        .cart_header__container {
+            display: flex;
+            align-items: center;
+
+            .cart_header__title {
+                flex-grow: 1;
+            }
+        }
+    }
+}

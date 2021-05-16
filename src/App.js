@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 import { fetchFoodItems } from "./actions/quoteActions";
 import AppHeader from "./components/Header";
 import WrappedRouter from "./routes/WrappedRouter";
@@ -15,10 +16,10 @@ const App = ({ dispatch }) => {
     };
 
     return (
-        <div>
+        <Router>
             <AppHeader />
             <WrappedRouter />
-        </div>
+        </Router>
     );
 };
 
