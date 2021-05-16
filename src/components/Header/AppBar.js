@@ -57,12 +57,10 @@ const AppBar = ({ cartItems }) => {
                 </Toolbar>
             </Topbar>
 
-            {openCartModal && (
-                <Cart
-                    openCartModal={openCartModal}
-                    handleOpenCartModal={handleOpenCartModal}
-                />
-            )}
+            <Cart
+                openCartModal={openCartModal}
+                handleOpenCartModal={handleOpenCartModal}
+            />
         </div>
     );
 };
