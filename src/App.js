@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchFoodItems } from "./actions/quoteActions";
 import AppHeader from "./components/Header";
+import WrappedRouter from "./routes/WrappedRouter";
 
 const App = ({ dispatch }) => {
     useEffect(() => {
@@ -16,6 +17,7 @@ const App = ({ dispatch }) => {
     return (
         <div>
             <AppHeader />
+            <WrappedRouter />
         </div>
     );
 };

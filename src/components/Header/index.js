@@ -1,12 +1,10 @@
 import React from "react";
-import Filters from "./Filters";
-import SearchBar from "./SearchBar";
+import AppBar from "./AppBar";
 
 const AppHeader = () => {
     return (
-        <div className="AppHeader">
-            <SearchBar />
-            <Filters />
+        <div className="app_header__container">
+            <AppBar />
         </div>
     );
 };
