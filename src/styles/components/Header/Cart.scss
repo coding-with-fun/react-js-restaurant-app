@@ -37,6 +37,12 @@
                     display: flex;
                     align-items: center;
 
+                    .cart_item__quantity {
+                        width: 30px;
+                        text-align: center;
+                        margin: 0 -5px;
+                    }
+
                     .remove_one_item__icon,
                     .add_one_item__icon {
                         color: #212529;
@@ -54,9 +60,20 @@
             border-radius: 5px;
         }
 
+        .empty_cart__title {
+            margin: 15px auto 10px auto;
+        }
+
         .cart_total__container {
-            margin: auto;
             margin: 18px auto;
+            display: flex;
+            align-items: center;
+
+            .cart__total {
+                font-weight: 700;
+                margin-left: 5px;
+                font-size: large;
+            }
         }
 
         .cart_buttons__container {

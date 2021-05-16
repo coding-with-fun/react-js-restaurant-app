@@ -8,12 +8,15 @@ import {
 import { ShoppingCart as ShoppingCartIcon } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Cart from "./Cart";
 
 const AppBar = ({ cartItems }) => {
+    const location = useLocation();
     const [openCartModal, setOpenCartModal] = useState(false);
     const [totalCartItems, setTotalCartItems] = useState(0);
+
+    console.log(location.pathname);
 
     useEffect(() => {
         let cartTotalItems = 0;
@@ -40,20 +43,22 @@ const AppBar = ({ cartItems }) => {
                         </Typography>
                     </Link>
                     <div className="app_bar_spacing__container" />
-                    <div className="app_bar_icons__container">
-                        <IconButton
-                            aria-label="Items in cart"
-                            color="inherit"
-                            onClick={handleOpenCartModal}
-                        >
-                            <Badge
-                                badgeContent={totalCartItems}
-                                color="secondary"
+                    {location.pathname === "/" && (
+                        <div className="app_bar_icons__container">
+                            <IconButton
+                                aria-label="Items in cart"
+                                color="inherit"
+                                onClick={handleOpenCartModal}
                             >
-                                <ShoppingCartIcon />
-                            </Badge>
-                        </IconButton>
-                    </div>
+                                <Badge
+                                    badgeContent={totalCartItems}
+                                    color="secondary"
+                                >
+                                    <ShoppingCartIcon />
+                                </Badge>
+                            </IconButton>
+                        </div>
+                    )}
                 </Toolbar>
             </Topbar>
 
